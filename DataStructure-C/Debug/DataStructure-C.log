@@ -1,0 +1,11 @@
+﻿生成启动时间为 2015/5/16 18:59:41。
+     1>项目“F:\My Documents\Visual Studio 2013\Projects\DataStructure-C\DataStructure-C\DataStructure-C.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt ..\..\..\..\Desktop\1.1.linearlist.c
+         1.1.linearlist.c
+     1>c1 : fatal error C1083: 无法打开源文件: “..\..\..\..\Desktop\1.1.linearlist.c”: No such file or directory
+     1>已完成生成项目“F:\My Documents\Visual Studio 2013\Projects\DataStructure-C\DataStructure-C\DataStructure-C.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:00.08
