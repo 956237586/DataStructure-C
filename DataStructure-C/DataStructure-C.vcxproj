@@ -12,9 +12,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="1.1.linearlist.c" />
+    <ClCompile Include="1.2.linearlist.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="1.1.linearlist.h" />
+    <ClInclude Include="1.2.linearlist.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2217D04B-7638-4107-89F0-21062470186C}</ProjectGuid>

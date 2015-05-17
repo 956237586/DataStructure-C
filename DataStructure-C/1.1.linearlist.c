@@ -45,7 +45,7 @@ List createList(int lenth){
 
 // 根据位序index，返回相应元素,失败返回-1；
 int get(List* l, int index){
-	if (index < getLength(l)){
+	if (index >= 0 && index < getLength(l)){
 		return l->elements[index];
 	} else{
 		return -1;
@@ -54,12 +54,13 @@ int get(List* l, int index){
 
 // 根据位序index，设置相应元素,失败返回-1；
 int set(List* l, int index, int x){
-	if (index < getLength(l)){
+	if (index >= 0 && index < getLength(l)){
 		return l->elements[index] = x;
 	} else{
 		return -1;
 	}
 }
+
 //在线性表l中查找x的第一次出现位置；
 int indexOf(List* l, int x){
 	int i = 0;
@@ -72,9 +73,22 @@ int indexOf(List* l, int x){
 
 //在位序index前插入一个新元素x；
 void insertInto(List* l, int index, int x){
+	int i = 0;
+	if (index >= 0 && index < getLength(l)){
+		l->lenth++;//表长度+1
+		l->elements = realloc(l->elements, (getLength(l) + 1)* sizeof(int));
+		for (i = getLength(l) - 1; i > index; i--) //index后面的部分照抄，注意位置
+			l->elements[i] = l->elements[i - 1];
+		l->elements[index] = x;
+	}
+}
+
+/*/
+//在位序index前插入一个新元素x；
+void insertInto(List* l, int index, int x){
 	int *telements = NULL;
 	int i = 0;
-	if (index < getLength(l)){
+	if (index >= 0 && index < getLength(l)){
 		l->lenth++;//表长度+1
 		telements = malloc(sizeof(int) * getLength(l));//分配新的内存空间
 		for (i = 0; i < getLength(l); i++){//生成插入后新表
@@ -90,11 +104,13 @@ void insertInto(List* l, int index, int x){
 		l->elements = telements;//换成新的表
 	}
 }
+//*/
+
 
 //删除指定位序index的元素；
 void deleteElementAt(List * l, int index){
 	int i = 0;
-	if (index < getLength(l)){
+	if (index >= 0 && index < getLength(l)){
 		for (i = 0; i < getLength(l); i++)
 			if (i == index)
 				break;

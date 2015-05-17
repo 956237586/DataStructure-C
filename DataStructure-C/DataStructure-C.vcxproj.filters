@@ -15,11 +15,17 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="1.2.linearlist.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="1.1.linearlist.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="1.2.linearlist.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
     <ClInclude Include="1.1.linearlist.h">
       <Filter>头文件</Filter>
     </ClInclude>

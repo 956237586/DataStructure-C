@@ -1,5 +1,5 @@
-#ifndef LinearList_h
-#define LinearList_h
+#ifndef LinearList1_h
+#define LinearList1_h
 #include<stdlib.h>
 
 typedef struct _list{
