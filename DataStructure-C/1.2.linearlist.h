@@ -21,7 +21,7 @@ Node* findNodeFrontOf(List* pList, Node* node);
 Node* findNodeById(List* l, int index);
 Node* findNodeByValue(List* pList, int value);
 int getLength(List* pList);
-void printList(List* pList);
+void printAll(List* pList);
 int delNode(List* pList, Node* del);
 int delNodeById(List* pList, int index);
 int delNodeByValue(List* pList, int value);

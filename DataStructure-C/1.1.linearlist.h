@@ -11,6 +11,7 @@ List createList(int lenth);
 int get(List* l, int index);
 int set(List* l, int index, int x);
 int indexOf(List* l, int x);
+void add(List* l, int x);
 void insertInto(List* l, int index, int x);
 void deleteElementAt(List * l, int index);
 int getLength(List* l);

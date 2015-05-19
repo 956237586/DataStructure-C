@@ -20,10 +20,30 @@ int main(){
 	deleteElementAt(list, 3 - 1);
 	printAll(list);
 
+	printf_s("在第1个之前插入一个111：\n");
+	insertInto(list, 1 - 1,111);
+	printAll(list);
+
+	printf_s("在最后1个之前插入一个222：\n");
+	insertInto(list, getLength(list)- 1, 222);
+	printAll(list);
+
 	printf_s("在第6个之前插入一个10：\n");
 	insertInto(list, 6 - 1, 10);
 	printAll(list);
 	printf_s("10在第%d个位置：\n\n", indexOf(list, 10) + 1);
+
+	printf_s("删除第1个：\n");
+	deleteElementAt(list, 1 - 1);
+	printAll(list);
+
+	printf_s("在最后加入333：\n");
+	add(list, 333);
+	printAll(list);
+
+	printf_s("删除最后1个：\n");
+	deleteElementAt(list,getLength(list) - 1);
+	printAll(list);
 
 	system("pause");
 	return 0;
@@ -61,20 +81,23 @@ int set(List* l, int index, int x){
 	}
 }
 
-//在线性表l中查找x的第一次出现位置；
+//在线性表l中查找x的第一次出现位置,找不到返回-1
 int indexOf(List* l, int x){
+	int ret = -1;
 	int i = 0;
 	for (i = 0; i < getLength(l); i++){
-		if (l->elements[i] == x)
+		if (l->elements[i] == x){
+			ret = i;
 			break;
+		}
 	}
-	return i;
+	return ret;
 }
 
 //在位序index前插入一个新元素x；
 void insertInto(List* l, int index, int x){
 	int i = 0;
-	if (index >= 0 && index < getLength(l)){
+	if (index >= 0 && index <= getLength(l)){
 		l->lenth++;//表长度+1
 		l->elements = realloc(l->elements, (getLength(l) + 1)* sizeof(int));
 		for (i = getLength(l) - 1; i > index; i--) //index后面的部分照抄，注意位置
@@ -106,7 +129,10 @@ void insertInto(List* l, int index, int x){
 }
 //*/
 
-
+//在最后加入一个元素x
+void add(List* l, int x){
+	insertInto(l, getLength(l), x);
+}
 //删除指定位序index的元素；
 void deleteElementAt(List * l, int index){
 	int i = 0;

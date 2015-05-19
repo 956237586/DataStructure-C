@@ -11,11 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1.1.linearlist.c" />
     <ClCompile Include="1.2.linearlist.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="1.1.linearlist.h" />
     <ClInclude Include="1.2.linearlist.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

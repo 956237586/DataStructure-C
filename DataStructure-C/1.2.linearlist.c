@@ -7,20 +7,43 @@ int main(){
 	int i = 0;
 
 	printf_s("创建空表：\n");
-	tlist = createList();
+	tlist = createList(10);
+	printAll(list);
+
+
 	printf_s("设置元素：\n");
 	for (i = 0; i < 10; i++)
 		listAddNode(list, i);
-	printList(list);
+	printAll(list);
 	printf_s("表长为%d\n", getLength(list));
 
 	printf_s("删除第3个：\n");
 	delNodeById(list, 3 - 1);
-	printList(list);
+	printAll(list);
+
+	printf_s("在第1个之前插入一个111：\n");
+	insertInto(list, 1 - 1, 111);
+	printAll(list);
+
+	printf_s("在最后1个之前插入一个222：\n");
+	insertInto(list, getLength(list) - 1, 222);
+	printAll(list);
 
 	printf_s("在第6个之前插入一个10：\n");
 	insertInto(list, 6 - 1, 10);
-	printList(list);
+	printAll(list);
+
+	printf_s("删除第1个：\n");
+	delNodeById(list, 1 - 1);
+	printAll(list);
+
+	printf_s("在最后加入333：\n");
+	listAddNode(list, 333);
+	printAll(list);
+
+	printf_s("删除最后1个：\n");
+	delNodeById(list, getLength(list) - 1);
+	printAll(list);
 
 	system("pause");
 	return 0;
@@ -46,19 +69,6 @@ Node* createNode(int number){
 	p->value = number;
 	p->next = NULL;
 	return p;
-}
-
-//在尾部添加一个节点
-void listAddNode(List* pList, int number)
-{
-	Node *p = createNode(number);
-	if (pList->last){
-		pList->last->next = p;
-		pList->last = pList->last->next;
-	} else{
-		pList->head = pList->last = p;
-	}
-	pList->len++;
 }
 
 //取得指定节点的前一个
@@ -96,14 +106,14 @@ Node* findNodeById(List* l, int index){
 
 //根据value找到链表中的节点，找不到返回NULL
 Node* findNodeByValue(List* pList, int value){
-	Node* t = pList->head;
+	Node* node = pList->head;
 	Node* ret = NULL;
-	while (t){
-		if (t->value == value){
-			ret = t;
+	while (node){
+		if (node->value == value){
+			ret = node;
 			break;
 		}
-		t = t->next;
+		node = node->next;
 	}
 	return ret;
 }
@@ -114,14 +124,15 @@ int getLength(List* pList){
 }
 
 //打印所有表元素
-void printList(List* pList){
+void printAll(List* pList){
 	Node* t = NULL;
 	int i = 0;
 	t = pList->head;
 	while (t){
-		printf("%5d %5d\n", i++, t->value);
+		printf_s("element[%d] = %d\n", i++, t->value);
 		t = t->next;
 	}
+	printf_s("\n");
 }
 
 //删除指定的节点
@@ -153,7 +164,6 @@ int delNodeById(List* pList, int index)
 }
 
 int delNodeByValue(List* pList, int value){
-	int ret = 0;
 	Node* del = findNodeByValue(pList, value);
 	return delNode(pList, del);
 }
@@ -168,17 +178,27 @@ void setNodeValueById(List* pList, int index, int value){
 	findNodeById(pList, index)->value = value;
 }
 
+//在尾部添加一个节点
+void listAddNode(List* pList, int number)
+{
+	insertInto(pList, getLength(pList), number);
+}
+
 //在位序index前插入一个新元素x；
 void insertInto(List* pList, int index, int x){
-	Node* node2 = findNodeById(pList, index);
-	Node* node1 = findNodeFrontOf(pList, node2);
 	Node* newNode = createNode(x);
-	if (index == 0){
-		newNode->next = pList->head;
-		pList->head = newNode;
-	} else{
-		newNode->next = node2;
-		node1->next = newNode;
+	Node* node = NULL;
+	if (index >= 0 && index <= getLength(pList)){
+		if (pList->len == 0){//如果是空表
+			pList->head = pList->last = newNode;
+		} else if (index == 0){
+			newNode->next = pList->head;
+			pList->head = newNode;
+		}else{
+			node = findNodeById(pList, index - 1);
+			newNode->next = node->next;
+			node->next = newNode;
+		}
 	}
 	pList->len++;
 }
