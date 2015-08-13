@@ -1,3 +1,4 @@
+/*栈的数组实现*/
 #include <stdio.h>
 #include "2.1.stack.h"
 int main() {
@@ -14,7 +15,7 @@ int main() {
 		printAll(stack);
 	}
 
-	printf("边界测试，在m满栈状态下继续push：\n");
+	printf("边界测试，在满栈状态下继续push：\n");
 	push(stack, 10);
 
 	printf_s("pop * 5：\n");

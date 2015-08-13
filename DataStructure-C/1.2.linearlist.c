@@ -1,3 +1,4 @@
+/*线性表，链表实现*/
 #include <stdio.h>
 #include "1.2.linearlist.h"
 

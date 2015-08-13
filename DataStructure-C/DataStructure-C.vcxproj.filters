@@ -15,12 +15,12 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="2.1.stack.h">
+    <ClInclude Include="2.2.stack.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="2.1.stack.c">
+    <ClCompile Include="2.2.stack.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
