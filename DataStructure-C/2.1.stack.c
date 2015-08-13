@@ -18,11 +18,11 @@ int main() {
 	push(stack, 10);
 
 	printf_s("pop * 5：\n");
-	pop(stack);
-	pop(stack);
-	pop(stack);
-	pop(stack);
-	pop(stack);
+	pop(stack, NULL);
+	pop(stack, NULL); 
+	pop(stack, NULL); 
+	pop(stack, NULL); 
+	pop(stack, NULL); 
 	printAll(stack);
 
 	printf_s("push * 2：\n");
@@ -32,12 +32,12 @@ int main() {
 
 	printf("pop所有内容：\n");
 	while (isEmpty(stack) == 0) {
-		pop(stack);
+		pop(stack, NULL);
 		printAll(stack);
 	}
 
 	printf("边界测试，在空栈状态下继续pop：\n");
-	pop(stack);//边界测试
+	pop(stack, NULL);//边界测试
 
 	system("pause");
 	return 0;
@@ -75,18 +75,22 @@ int isEmpty(Stack* s) {
 	return s->top == -1;
 }
 
-// 删除并返回栈顶元素
-int pop(Stack* s) {
+// 删除并返回栈顶元素,失败返回0,成功的话变量会被存到i；
+int pop(Stack* s, int* i) {
 	int ret;
 	//if (isEmpty(s) == 0) {
 	if (!isEmpty(s)) {
-		ret = s->elements[s->top];
+		if (i != NULL) {
+			*i = s->elements[s->top];
+		}
+		printf_s("pop %d\n", s->elements[s->top]);//为方便观察效果打印结果
 		s->top--;//注意这两句的顺序
-		printf("pop %d\n", ret);//为方便观察效果打印结果
+		ret = 1;
 	} else {
-		printf_s("Stack is  already empty!\n");
+		printf_s("Stack is  already empty!\n"); 
+		ret = 0;//特殊值，标志错误
 	}
-	return -1;//特殊值，标志错误
+	return ret;
 }
 
 //预览栈当前状态
