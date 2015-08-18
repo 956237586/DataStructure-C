@@ -7,42 +7,42 @@ int main(){
 	List* list = &tlist;
 	int i = 0;
 
-	printf_s("创建空表：\n");
+	printf("创建空表：\n");
 	tlist = createList(10);
 	printAll(list);
-	printf_s("表长为%d\n", getLength(list));
+	printf("表长为%d\n", getLength(list));
 
-	printf_s("设置元素：\n");
+	printf("设置元素：\n");
 	for (i = 0; i < getLength(list); i++)
 		set(list, i, i);
 	printAll(list);
 
-	printf_s("删除第3个：\n");
+	printf("删除第3个：\n");
 	deleteElementAt(list, 3 - 1);
 	printAll(list);
 
-	printf_s("在第1个之前插入一个111：\n");
+	printf("在第1个之前插入一个111：\n");
 	insertInto(list, 1 - 1,111);
 	printAll(list);
 
-	printf_s("在最后1个之前插入一个222：\n");
+	printf("在最后1个之前插入一个222：\n");
 	insertInto(list, getLength(list)- 1, 222);
 	printAll(list);
 
-	printf_s("在第6个之前插入一个10：\n");
+	printf("在第6个之前插入一个10：\n");
 	insertInto(list, 6 - 1, 10);
 	printAll(list);
-	printf_s("10在第%d个位置：\n\n", indexOf(list, 10) + 1);
+	printf("10在第%d个位置：\n\n", indexOf(list, 10) + 1);
 
-	printf_s("删除第1个：\n");
+	printf("删除第1个：\n");
 	deleteElementAt(list, 1 - 1);
 	printAll(list);
 
-	printf_s("在最后加入333：\n");
+	printf("在最后加入333：\n");
 	add(list, 333);
 	printAll(list);
 
-	printf_s("删除最后1个：\n");
+	printf("删除最后1个：\n");
 	deleteElementAt(list,getLength(list) - 1);
 	printAll(list);
 
@@ -156,6 +156,6 @@ int getLength(List* l){
 void printAll(List* l){
 	int i = 0;
 	for (i = 0; i < getLength(l); i++)
-		printf_s("element[%d] = %d\n", i, l->elements[i]);
-	printf_s("\n");
+		printf("element[%d] = %d\n", i, l->elements[i]);
+	printf("\n");
 }

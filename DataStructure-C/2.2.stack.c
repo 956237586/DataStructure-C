@@ -5,11 +5,11 @@ int main() {
 	Stack* stack = NULL;
 	int i = 0, size = 10;
 
-	printf_s("创建空栈：\n");
+	printf("创建空栈：\n");
 	stack = createStack(size);
 	printAll(stack);
 
-	printf_s("设置元素：\n");
+	printf("设置元素：\n");
 	while (isFull(stack) == 0) {
 		push(stack, i++);
 		printAll(stack);
@@ -18,7 +18,7 @@ int main() {
 	printf("边界测试，在满栈状态下继续push：\n");
 	push(stack, 10);
 
-	printf_s("pop * 5：\n");
+	printf("pop * 5：\n");
 	pop(stack, NULL);
 	pop(stack, NULL);
 	pop(stack, NULL);
@@ -26,7 +26,7 @@ int main() {
 	pop(stack, NULL);
 	printAll(stack);
 
-	printf_s("push * 2：\n");
+	printf("push * 2：\n");
 	push(stack, 111);
 	push(stack, 222);
 	printAll(stack);
@@ -69,9 +69,9 @@ void push(Stack* s, int item) {
 		newItem->next = s->top.next;
 		s->top.next = newItem;
 		s->currentSize++;
-		printf_s("push %d\n", item);
+		printf("push %d\n", item);
 	} else {
-		printf_s("Stack is already full!\n");
+		printf("Stack is already full!\n");
 	}
 }
 
@@ -89,13 +89,13 @@ int pop(Stack* s, int* i) {
 		if (i != NULL) {
 			*i = s->top.next->element;
 		}
-		printf_s("pop %d\n", s->top.next->element);//为方便观察效果打印结果
+		printf("pop %d\n", s->top.next->element);//为方便观察效果打印结果
 		s->top.next = t->next;
 		free(t);
 		s->currentSize--;
 		ret = 1;
 	} else {
-		printf_s("Stack is  already empty!\n");
+		printf("Stack is  already empty!\n");
 		ret = 0;//特殊值，标志错误
 	}
 	return ret;
@@ -107,12 +107,12 @@ void printAll(Stack* s) {
 	int i = s->currentSize - 1;
 	
 	if (t == NULL) {
-		printf_s("Empty Stack\n");
+		printf("Empty Stack\n");
 	} else {
 		while (t != NULL) {
-			printf_s("elements[%d] = %d\n", i--, t->element);
+			printf("elements[%d] = %d\n", i--, t->element);
 			t = t->next;
 		}
 	}
-	printf_s("\n");
+	printf("\n");
 }

@@ -7,42 +7,42 @@ int main(){
 	List* list = &tlist;
 	int i = 0;
 
-	printf_s("创建空表：\n");
+	printf("创建空表：\n");
 	tlist = createList(10);
 	printAll(list);
 
 
-	printf_s("设置元素：\n");
+	printf("设置元素：\n");
 	for (i = 0; i < 10; i++)
 		listAddNode(list, i);
 	printAll(list);
-	printf_s("表长为%d\n", getLength(list));
+	printf("表长为%d\n", getLength(list));
 
-	printf_s("删除第3个：\n");
+	printf("删除第3个：\n");
 	delNodeById(list, 3 - 1);
 	printAll(list);
 
-	printf_s("在第1个之前插入一个111：\n");
+	printf("在第1个之前插入一个111：\n");
 	insertInto(list, 1 - 1, 111);
 	printAll(list);
 
-	printf_s("在最后1个之前插入一个222：\n");
+	printf("在最后1个之前插入一个222：\n");
 	insertInto(list, getLength(list) - 1, 222);
 	printAll(list);
 
-	printf_s("在第6个之前插入一个10：\n");
+	printf("在第6个之前插入一个10：\n");
 	insertInto(list, 6 - 1, 10);
 	printAll(list);
 
-	printf_s("删除第1个：\n");
+	printf("删除第1个：\n");
 	delNodeById(list, 1 - 1);
 	printAll(list);
 
-	printf_s("在最后加入333：\n");
+	printf("在最后加入333：\n");
 	listAddNode(list, 333);
 	printAll(list);
 
-	printf_s("删除最后1个：\n");
+	printf("删除最后1个：\n");
 	delNodeById(list, getLength(list) - 1);
 	printAll(list);
 
@@ -130,10 +130,10 @@ void printAll(List* pList){
 	int i = 0;
 	t = pList->head;
 	while (t){
-		printf_s("element[%d] = %d\n", i++, t->value);
+		printf("element[%d] = %d\n", i++, t->value);
 		t = t->next;
 	}
-	printf_s("\n");
+	printf("\n");
 }
 
 //删除指定的节点
