@@ -34,3 +34,6 @@ DataStructure-C.opensdf
 *.log
 *.tlog
 Debug/*
+.vs/DataStructure-C/v14/.suo
+/DataStructure-C/Debug
+/DataStructure-C/DataStructure-C.aps
