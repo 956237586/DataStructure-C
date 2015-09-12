@@ -1,16 +1,12 @@
-#ifndef queue_h
-#define queue_h
-#include <stdlib.h>
-typedef struct _node {
-	int element;
-	struct _node* next;
-} Node;
+#ifndef queue1_h
+#define queue1_h
 
 typedef struct _queue {
 	int currentSize;//当前元素个数
 	int maxSize;
-	Node* first;//指向第一个节点的指针
-	Node* last;
+	int first;
+	int last;
+	int* elements;
 } Queue;
 
 Queue* creatQueue(int maxSize); //生成长度为MaxSize的空队列；

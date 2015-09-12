@@ -1,4 +1,4 @@
-/*队列的链表实现*/
+/*队列的数组实现（循环队列）*/
 #include <stdio.h>
 #include "3.1.queue.h"
 int main() {
@@ -48,10 +48,11 @@ int main() {
 Queue* creatQueue(int maxSize) {
 	Queue* queue = NULL;
 	queue = malloc(sizeof(Queue));
+	queue->elements = malloc(sizeof(int) * maxSize);
 	queue->maxSize = maxSize;
 	queue->currentSize = 0;
-	queue->first = NULL;
-	queue->last = NULL;
+	queue->first = 0;//第一个元素在数组中的下标
+	queue->last = -1;
 	return queue;
 }
 
@@ -62,14 +63,12 @@ int isFull(Queue* q) {
 
 // 将数据元素item插入队列Q中；
 void add(Queue* q, int item) {
-	Node* t = NULL;
 	if (!isFull(q)) {
-		t = malloc(sizeof(Node));
-		t->element = item;
-		t->next = NULL;
-		if (isEmpty(q))	q->first = q->last = t;
-		else q->last->next = t;
-		q->last = t;
+		q->last = ++q->last % q->maxSize;
+		//为了充分利用空间和减少繁琐的数据移动
+		//下标加完1后用最大长度取余
+		//这样可以实现数据循环的储存在数组中
+		q->elements[q->last] = item;
 		q->currentSize++;
 		printf("add %d\n", item);
 		//为了方便观察打印信息
@@ -86,18 +85,15 @@ int isEmpty(Queue* q) {
 // 将队头数据元素从队列中删除并返回。
 int delete(Queue* q, int* firstItem) {
 	int ret;
-	Node* t = q->first;
 	if (!isEmpty(q)) {
 		if (firstItem != NULL) {
-			*firstItem = q->first->element;
+			*firstItem = q->elements[q->first];
 		}
-		printf("delete %d\n", q->first->element);
+		printf("delete %d\n", q->elements[q->first]);
+		q->first = ++q->first % q->maxSize;
 		//为了方便观察打印信息
-		q->first = q->first->next;
-		free(t);
 		q->currentSize--;
 		ret = 1;
-		
 	} else {
 		printf("Queue is Empty!\n");
 		ret = 0;
@@ -107,15 +103,13 @@ int delete(Queue* q, int* firstItem) {
 
 //预览队列当前状态
 void printAll(Queue* q) {
-	int i = 0;
-	Node* t = NULL;
+	int i = q->first;
+	int j = 0;
 	if (!isEmpty(q)) {
-		t = q->first;
-		while (t != NULL) {
-			printf("element[%d] = %d\n", i++, t->element);
-			t = t->next;
+		while (j < q->currentSize) {
+			printf("element[%d] = %d\n", j++, q->elements[i]);
+			i = ++i % q->maxSize;
 		}
-		
 	} else {
 		printf("Empty Queue\n");
 	}

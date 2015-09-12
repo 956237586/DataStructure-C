@@ -10,6 +10,12 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="3.2.queue.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="3.2.queue.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2217D04B-7638-4107-89F0-21062470186C}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
