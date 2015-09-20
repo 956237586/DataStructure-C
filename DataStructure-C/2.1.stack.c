@@ -46,11 +46,11 @@ int main() {
 
 //´´½¨Õ»
 Stack*  createStack(int maxSize) {
-	Stack* stack = malloc(sizeof(Stack));
+	Stack* stack = (Stack*)malloc(sizeof(Stack));
 	if(stack != NULL){
 		stack->size = maxSize;
 		stack->top = -1;
-		stack->elements = malloc(maxSize * sizeof(int));
+		stack->elements = (int*)malloc(maxSize * sizeof(int));
 	}
 	return stack;
 }

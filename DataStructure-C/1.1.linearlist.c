@@ -55,7 +55,7 @@ List createList(int lenth){
 	List list;
 	int i = 0;
 	list.lenth = lenth;
-	list.elements = malloc(sizeof(int) * lenth);
+	list.elements = (int*)malloc(sizeof(int) * lenth);
 
 	//初始化内容为0
 	for (i = 0; i < lenth; i++){

@@ -46,7 +46,7 @@ int main() {
 
 //´´½¨Õ»
 Stack*  createStack(int maxSize) {
-	Stack* stack = malloc(sizeof(Stack));
+	Stack* stack = (Stack*)malloc(sizeof(Stack));
 	if (stack != NULL) {
 		stack->top.element = maxSize;
 		stack->top.next = NULL;
@@ -64,7 +64,7 @@ void push(Stack* s, int item) {
 	Node* newItem = NULL;
 	//if (isFull(s) == 0) {
 	if (!isFull(s)) {
-		newItem = malloc(sizeof(Node));
+		newItem = (Node*)malloc(sizeof(Node));
 		newItem->element = item;
 		newItem->next = s->top.next;
 		s->top.next = newItem;

@@ -11,34 +11,34 @@ int main() {
 
 	printf("设置元素：\n");
 	while (isFull(queue) == 0) {
-		add(queue, i++);
+		append(queue, i++);
 		printAll(queue);
 	}
 
 	printf("边界测试，在满队列状态下继续add：\n");
-	add(queue, 10);
+	append(queue, 10);
 
 	printf("delete * 5：\n");
-	delete(queue, NULL);
-	delete(queue, NULL);
-	delete(queue, NULL);
-	delete(queue, NULL);
-	delete(queue, NULL);
+	serve(queue, NULL);
+	serve(queue, NULL);
+	serve(queue, NULL);
+	serve(queue, NULL);
+	serve(queue, NULL);
 	printAll(queue);
 
 	printf("add * 2：\n");
-	add(queue, 111);
-	add(queue, 222);
+	append(queue, 111);
+	append(queue, 222);
 	printAll(queue);
 
 	printf("delete所有内容：\n");
 	while (isEmpty(queue) == 0) {
-		delete(queue, NULL);
+		serve(queue, NULL);
 		printAll(queue);
 	}
 
 	printf("边界测试，在空状态下继续delete：\n");
-	delete(queue, NULL);//边界测试
+	serve(queue, NULL);//边界测试
 
 	system("pause");
  	return 0;
@@ -47,8 +47,8 @@ int main() {
 //生成长度为MaxSize的空队列；
 Queue* creatQueue(int maxSize) {
 	Queue* queue = NULL;
-	queue = malloc(sizeof(Queue));
-	queue->elements = malloc(sizeof(int) * maxSize);
+	queue = (Queue*)malloc(sizeof(Queue));
+	queue->elements = (int*)malloc(sizeof(int) * maxSize);
 	queue->maxSize = maxSize;
 	queue->currentSize = 0;
 	queue->first = 0;//第一个元素在数组中的下标
@@ -62,7 +62,7 @@ int isFull(Queue* q) {
 }
 
 // 将数据元素item插入队列Q中；
-void add(Queue* q, int item) {
+void append(Queue* q, int item) {
 	if (!isFull(q)) {
 		q->last = ++q->last % q->maxSize;
 		//为了充分利用空间和减少繁琐的数据移动
@@ -83,7 +83,7 @@ int isEmpty(Queue* q) {
 }
 
 // 将队头数据元素从队列中删除并返回。
-int delete(Queue* q, int* firstItem) {
+int serve(Queue* q, int* firstItem) {
 	int ret;
 	if (!isEmpty(q)) {
 		if (firstItem != NULL) {
