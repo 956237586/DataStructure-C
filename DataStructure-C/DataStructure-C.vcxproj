@@ -11,10 +11,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="3.2.queue.h" />
+    <ClCompile Include="3.1.queue.c" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="3.2.queue.c" />
+    <ClInclude Include="3.1.queue.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{2217D04B-7638-4107-89F0-21062470186C}</ProjectGuid>
